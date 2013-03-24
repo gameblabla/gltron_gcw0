@@ -1,0 +1,422 @@
+sound_glue.o: sound_glue.cpp ../../nebu/include/Nebu_audio.h \
+ ../../nebu/include/audio/nebu_Sound.h \
+ ../../nebu/include/audio/nebu_SoundSystem.h \
+ ../../nebu/include/base/nebu_types.h \
+ ../../nebu/include/audio/nebu_Source.h \
+ ../../nebu/include/audio/nebu_Sound.h /usr/include/SDL/SDL.h \
+ /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
+ /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
+ /usr/include/arm-linux-gnueabihf/sys/types.h /usr/include/features.h \
+ /usr/include/arm-linux-gnueabihf/bits/predefs.h \
+ /usr/include/arm-linux-gnueabihf/sys/cdefs.h \
+ /usr/include/arm-linux-gnueabihf/bits/wordsize.h \
+ /usr/include/arm-linux-gnueabihf/gnu/stubs.h \
+ /usr/include/arm-linux-gnueabihf/bits/types.h \
+ /usr/include/arm-linux-gnueabihf/bits/typesizes.h /usr/include/time.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stddef.h \
+ /usr/include/endian.h /usr/include/arm-linux-gnueabihf/bits/endian.h \
+ /usr/include/arm-linux-gnueabihf/bits/byteswap.h \
+ /usr/include/arm-linux-gnueabihf/sys/select.h \
+ /usr/include/arm-linux-gnueabihf/bits/select.h \
+ /usr/include/arm-linux-gnueabihf/bits/sigset.h \
+ /usr/include/arm-linux-gnueabihf/bits/time.h \
+ /usr/include/arm-linux-gnueabihf/sys/sysmacros.h \
+ /usr/include/arm-linux-gnueabihf/bits/pthreadtypes.h \
+ /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
+ /usr/include/wchar.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stdarg.h \
+ /usr/include/arm-linux-gnueabihf/bits/stdio_lim.h \
+ /usr/include/arm-linux-gnueabihf/bits/sys_errlist.h \
+ /usr/include/stdlib.h /usr/include/arm-linux-gnueabihf/bits/waitflags.h \
+ /usr/include/arm-linux-gnueabihf/bits/waitstatus.h \
+ /usr/include/xlocale.h /usr/include/alloca.h /usr/include/string.h \
+ /usr/include/strings.h /usr/include/inttypes.h \
+ /usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stdint.h \
+ /usr/include/stdint.h /usr/include/arm-linux-gnueabihf/bits/wchar.h \
+ /usr/include/ctype.h /usr/include/iconv.h /usr/include/SDL/begin_code.h \
+ /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
+ /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
+ /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
+ /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
+ /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
+ /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
+ /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
+ /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
+ /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
+ /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
+ ../../nebu/include/base/nebu_Vector3.h /usr/include/math.h \
+ /usr/include/arm-linux-gnueabihf/bits/huge_val.h \
+ /usr/include/arm-linux-gnueabihf/bits/huge_valf.h \
+ /usr/include/arm-linux-gnueabihf/bits/huge_vall.h \
+ /usr/include/arm-linux-gnueabihf/bits/inf.h \
+ /usr/include/arm-linux-gnueabihf/bits/nan.h \
+ /usr/include/arm-linux-gnueabihf/bits/mathdef.h \
+ /usr/include/arm-linux-gnueabihf/bits/mathcalls.h \
+ /usr/include/SDL/SDL_sound.h /usr/include/SDL/SDL.h \
+ ../../nebu/include/audio/nebu_Source.h \
+ ../../nebu/include/audio/nebu_Source3D.h \
+ ../../nebu/include/audio/nebu_SoundSystem.h \
+ ../../nebu/include/audio/nebu_SourceSample.h \
+ ../../nebu/include/audio/nebu_Source.h \
+ ../../nebu/include/audio/nebu_SourceCopy.h \
+ ../../nebu/include/audio/nebu_Sound.h \
+ ../../nebu/include/audio/nebu_SoundSystem.h \
+ ../../nebu/include/audio/nebu_SourceSample.h \
+ ../../nebu/include/audio/nebu_SourceEngine.h \
+ ../../nebu/include/audio/nebu_Source3D.h \
+ ../../nebu/include/audio/nebu_SourceMusic.h \
+ ../../nebu/include/audio/nebu_SourceSample.h \
+ ../../src/include/game/game.h ../../src/include/game/game_data.h \
+ ../../nebu/include/Nebu_base.h ../../nebu/include/base/nebu_callbacks.h \
+ ../../nebu/include/base/nebu_geom.h \
+ ../../nebu/include/base/nebu_matrix.h \
+ ../../nebu/include/base/nebu_vector.h \
+ ../../nebu/include/base/nebu_random.h \
+ ../../nebu/include/base/nebu_types.h ../../nebu/include/base/nebu_util.h \
+ ../../nebu/include/base/nebu_vector.h \
+ ../../nebu/include/base/nebu_system.h \
+ ../../nebu/include/base/nebu_callbacks.h \
+ ../../nebu/include/Nebu_filesystem.h \
+ ../../nebu/include/filesystem/nebu_file_io.h \
+ ../../nebu/include/filesystem/nebu_filesystem.h \
+ ../../nebu/include/filesystem/nebu_file_io.h \
+ ../../src/include/configuration/configuration.h \
+ ../../src/include/configuration/settings.h \
+ ../../src/include/game/camera.h ../../src/include/game/engine.h \
+ ../../src/include/game/event.h ../../src/include/video/video.h \
+ ../../src/include/video/fonttex.h ../../src/include/video/model.h \
+ /usr/include/GLES/gl.h /usr/include/GLES/glplatform.h \
+ /usr/include/KHR/khrplatform.h ../../nebu/include/Nebu_video.h \
+ ../../nebu/include/video/nebu_video_types.h \
+ ../../nebu/include/video/nebu_console.h \
+ ../../nebu/include/video/nebu_light.h \
+ ../../nebu/include/video/nebu_png_texture.h \
+ ../../nebu/include/video/nebu_quad.h \
+ ../../nebu/include/video/nebu_renderer_gl.h \
+ ../../nebu/include/video/nebu_quad.h \
+ ../../nebu/include/video/nebu_video_system.h \
+ ../../src/include/video/gl2gles.h /usr/include/png.h /usr/include/zlib.h \
+ /usr/include/zconf.h /usr/include/unistd.h \
+ /usr/include/arm-linux-gnueabihf/bits/posix_opt.h \
+ /usr/include/arm-linux-gnueabihf/bits/environments.h \
+ /usr/include/arm-linux-gnueabihf/bits/confname.h /usr/include/getopt.h \
+ /usr/include/pngconf.h /usr/include/setjmp.h \
+ /usr/include/arm-linux-gnueabihf/bits/setjmp.h \
+ ../../src/include/video/recognizer.h ../../src/include/video/explosion.h \
+ ../../src/include/video/graphics_utility.h \
+ ../../src/include/video/video.h ../../src/include/video/graphics_fx.h \
+ ../../src/include/video/graphics_hud.h \
+ ../../src/include/video/graphics_lights.h \
+ ../../src/include/video/graphics_world.h \
+ ../../src/include/video/trail_geometry.h \
+ ../../src/include/video/texture.h ../../src/include/audio/sound_glue.h
+
+../../nebu/include/Nebu_audio.h:
+
+../../nebu/include/audio/nebu_Sound.h:
+
+../../nebu/include/audio/nebu_SoundSystem.h:
+
+../../nebu/include/base/nebu_types.h:
+
+../../nebu/include/audio/nebu_Source.h:
+
+../../nebu/include/audio/nebu_Sound.h:
+
+/usr/include/SDL/SDL.h:
+
+/usr/include/SDL/SDL_main.h:
+
+/usr/include/SDL/SDL_stdinc.h:
+
+/usr/include/SDL/SDL_config.h:
+
+/usr/include/SDL/SDL_platform.h:
+
+/usr/include/arm-linux-gnueabihf/sys/types.h:
+
+/usr/include/features.h:
+
+/usr/include/arm-linux-gnueabihf/bits/predefs.h:
+
+/usr/include/arm-linux-gnueabihf/sys/cdefs.h:
+
+/usr/include/arm-linux-gnueabihf/bits/wordsize.h:
+
+/usr/include/arm-linux-gnueabihf/gnu/stubs.h:
+
+/usr/include/arm-linux-gnueabihf/bits/types.h:
+
+/usr/include/arm-linux-gnueabihf/bits/typesizes.h:
+
+/usr/include/time.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stddef.h:
+
+/usr/include/endian.h:
+
+/usr/include/arm-linux-gnueabihf/bits/endian.h:
+
+/usr/include/arm-linux-gnueabihf/bits/byteswap.h:
+
+/usr/include/arm-linux-gnueabihf/sys/select.h:
+
+/usr/include/arm-linux-gnueabihf/bits/select.h:
+
+/usr/include/arm-linux-gnueabihf/bits/sigset.h:
+
+/usr/include/arm-linux-gnueabihf/bits/time.h:
+
+/usr/include/arm-linux-gnueabihf/sys/sysmacros.h:
+
+/usr/include/arm-linux-gnueabihf/bits/pthreadtypes.h:
+
+/usr/include/stdio.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stdarg.h:
+
+/usr/include/arm-linux-gnueabihf/bits/stdio_lim.h:
+
+/usr/include/arm-linux-gnueabihf/bits/sys_errlist.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/arm-linux-gnueabihf/bits/waitflags.h:
+
+/usr/include/arm-linux-gnueabihf/bits/waitstatus.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/alloca.h:
+
+/usr/include/string.h:
+
+/usr/include/strings.h:
+
+/usr/include/inttypes.h:
+
+/usr/lib/gcc/arm-linux-gnueabihf/4.6/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/arm-linux-gnueabihf/bits/wchar.h:
+
+/usr/include/ctype.h:
+
+/usr/include/iconv.h:
+
+/usr/include/SDL/begin_code.h:
+
+/usr/include/SDL/close_code.h:
+
+/usr/include/SDL/SDL_audio.h:
+
+/usr/include/SDL/SDL_error.h:
+
+/usr/include/SDL/SDL_endian.h:
+
+/usr/include/SDL/SDL_mutex.h:
+
+/usr/include/SDL/SDL_thread.h:
+
+/usr/include/SDL/SDL_rwops.h:
+
+/usr/include/SDL/SDL_cdrom.h:
+
+/usr/include/SDL/SDL_cpuinfo.h:
+
+/usr/include/SDL/SDL_events.h:
+
+/usr/include/SDL/SDL_active.h:
+
+/usr/include/SDL/SDL_keyboard.h:
+
+/usr/include/SDL/SDL_keysym.h:
+
+/usr/include/SDL/SDL_mouse.h:
+
+/usr/include/SDL/SDL_video.h:
+
+/usr/include/SDL/SDL_joystick.h:
+
+/usr/include/SDL/SDL_quit.h:
+
+/usr/include/SDL/SDL_loadso.h:
+
+/usr/include/SDL/SDL_timer.h:
+
+/usr/include/SDL/SDL_version.h:
+
+../../nebu/include/base/nebu_Vector3.h:
+
+/usr/include/math.h:
+
+/usr/include/arm-linux-gnueabihf/bits/huge_val.h:
+
+/usr/include/arm-linux-gnueabihf/bits/huge_valf.h:
+
+/usr/include/arm-linux-gnueabihf/bits/huge_vall.h:
+
+/usr/include/arm-linux-gnueabihf/bits/inf.h:
+
+/usr/include/arm-linux-gnueabihf/bits/nan.h:
+
+/usr/include/arm-linux-gnueabihf/bits/mathdef.h:
+
+/usr/include/arm-linux-gnueabihf/bits/mathcalls.h:
+
+/usr/include/SDL/SDL_sound.h:
+
+/usr/include/SDL/SDL.h:
+
+../../nebu/include/audio/nebu_Source.h:
+
+../../nebu/include/audio/nebu_Source3D.h:
+
+../../nebu/include/audio/nebu_SoundSystem.h:
+
+../../nebu/include/audio/nebu_SourceSample.h:
+
+../../nebu/include/audio/nebu_Source.h:
+
+../../nebu/include/audio/nebu_SourceCopy.h:
+
+../../nebu/include/audio/nebu_Sound.h:
+
+../../nebu/include/audio/nebu_SoundSystem.h:
+
+../../nebu/include/audio/nebu_SourceSample.h:
+
+../../nebu/include/audio/nebu_SourceEngine.h:
+
+../../nebu/include/audio/nebu_Source3D.h:
+
+../../nebu/include/audio/nebu_SourceMusic.h:
+
+../../nebu/include/audio/nebu_SourceSample.h:
+
+../../src/include/game/game.h:
+
+../../src/include/game/game_data.h:
+
+../../nebu/include/Nebu_base.h:
+
+../../nebu/include/base/nebu_callbacks.h:
+
+../../nebu/include/base/nebu_geom.h:
+
+../../nebu/include/base/nebu_matrix.h:
+
+../../nebu/include/base/nebu_vector.h:
+
+../../nebu/include/base/nebu_random.h:
+
+../../nebu/include/base/nebu_types.h:
+
+../../nebu/include/base/nebu_util.h:
+
+../../nebu/include/base/nebu_vector.h:
+
+../../nebu/include/base/nebu_system.h:
+
+../../nebu/include/base/nebu_callbacks.h:
+
+../../nebu/include/Nebu_filesystem.h:
+
+../../nebu/include/filesystem/nebu_file_io.h:
+
+../../nebu/include/filesystem/nebu_filesystem.h:
+
+../../nebu/include/filesystem/nebu_file_io.h:
+
+../../src/include/configuration/configuration.h:
+
+../../src/include/configuration/settings.h:
+
+../../src/include/game/camera.h:
+
+../../src/include/game/engine.h:
+
+../../src/include/game/event.h:
+
+../../src/include/video/video.h:
+
+../../src/include/video/fonttex.h:
+
+../../src/include/video/model.h:
+
+/usr/include/GLES/gl.h:
+
+/usr/include/GLES/glplatform.h:
+
+/usr/include/KHR/khrplatform.h:
+
+../../nebu/include/Nebu_video.h:
+
+../../nebu/include/video/nebu_video_types.h:
+
+../../nebu/include/video/nebu_console.h:
+
+../../nebu/include/video/nebu_light.h:
+
+../../nebu/include/video/nebu_png_texture.h:
+
+../../nebu/include/video/nebu_quad.h:
+
+../../nebu/include/video/nebu_renderer_gl.h:
+
+../../nebu/include/video/nebu_quad.h:
+
+../../nebu/include/video/nebu_video_system.h:
+
+../../src/include/video/gl2gles.h:
+
+/usr/include/png.h:
+
+/usr/include/zlib.h:
+
+/usr/include/zconf.h:
+
+/usr/include/unistd.h:
+
+/usr/include/arm-linux-gnueabihf/bits/posix_opt.h:
+
+/usr/include/arm-linux-gnueabihf/bits/environments.h:
+
+/usr/include/arm-linux-gnueabihf/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/include/pngconf.h:
+
+/usr/include/setjmp.h:
+
+/usr/include/arm-linux-gnueabihf/bits/setjmp.h:
+
+../../src/include/video/recognizer.h:
+
+../../src/include/video/explosion.h:
+
+../../src/include/video/graphics_utility.h:
+
+../../src/include/video/video.h:
+
+../../src/include/video/graphics_fx.h:
+
+../../src/include/video/graphics_hud.h:
+
+../../src/include/video/graphics_lights.h:
+
+../../src/include/video/graphics_world.h:
+
+../../src/include/video/trail_geometry.h:
+
+../../src/include/video/texture.h:
+
+../../src/include/audio/sound_glue.h:

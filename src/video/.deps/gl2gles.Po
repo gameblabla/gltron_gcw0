@@ -1,0 +1,10 @@
+gl2gles.o: gl2gles.cpp ../include/video/gl2gles.h /usr/include/GLES/gl.h \
+ /usr/include/GLES/glplatform.h /usr/include/KHR/khrplatform.h
+
+../include/video/gl2gles.h:
+
+/usr/include/GLES/gl.h:
+
+/usr/include/GLES/glplatform.h:
+
+/usr/include/KHR/khrplatform.h:

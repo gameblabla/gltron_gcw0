@@ -1,0 +1,2 @@
+shlibs:Depends=libc6 (>= 2.4), libc6 (>= 2.13-28), libgcc1 (>= 1:4.4.0), libgl1-mesa-glx | libgl1, libpng12-0 (>= 1.2.13-4), libsdl-sound1.2 (>= 1.0.1), libsdl1.2debian (>= 1.2.11), libstdc++6 (>= 4.3.0), zlib1g (>= 1:1.1.4)
+misc:Depends=

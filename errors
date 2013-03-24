@@ -1,0 +1,18 @@
+oot@rk3066-dev:/usr/src/games/gltron-0.70final# ./gltron
+[status] loading settings from /root/.gltronrc
+EGL Open display
+EGL Get display
+EGL Init
+Found 4 available configs
+Config 0
+EGL Bind
+EGL Create Context
+EGL failed (12293).
+ERROR: Unable to create GLES context!
+ERROR: Unable to initialise EGL. See previous error.
+[status] loading artpack 'default'
+using min_filter: 9987 (setting: 3)
+[scripting audio] found track '	song_revenge_of_cats.it	'
+[sound] initializing sound
+[sound] loading song song_revenge_of_cats.it
+buffer underrun!

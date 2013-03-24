@@ -1,0 +1,14 @@
+Source: gltron
+Section: games
+Priority: optional
+Maintainer: Ari Pollak <ari@debian.org>
+Standards-Version: 3.8.4
+Build-Depends: debhelper (>= 7), autotools-dev, zlib1g-dev, libpng12-dev, libgl1-mesa-dev | libgl-dev, libsdl-sound1.2-dev, libsdl1.2-dev, libx11-dev
+
+Package: gltron
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: 3D lightcycle game
+ glTron is a tron-like lightcycle game with a nice 3D perspective.
+ 3D acceleration is recommended.
+Homepage: http://www.gltron.org
