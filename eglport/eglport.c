@@ -65,7 +65,7 @@ Initialise opengl settings. Call straight after SDL_SetVideoMode()
  
 int8_t EGL_Open( uint16_t width, uint16_t height )
 {
-    printf("Try to initialise EGL display.\n");
+	printf("Try to initialise EGL display.\n");
     g_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (g_eglDisplay == EGL_NO_DISPLAY)
     {

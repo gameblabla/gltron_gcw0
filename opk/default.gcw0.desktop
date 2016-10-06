@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=GLTron
-Comment=glTron
+Name=Blid GLTron
+Comment=glTron for the blinds
 Exec=gltron.elf
 Icon=icon
 Terminal=false
