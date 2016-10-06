@@ -33,12 +33,12 @@ void drawGame(void) {
                gSettingsCache.clear_color[2],
                gSettingsCache.clear_color[3]);
 
-  if(gSettingsCache.use_stencil) {
+  /*if(gSettingsCache.use_stencil) {
     glClearStencil(0);
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT );
-  } else {
+  } else {*/
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-  }
+  /*}*/
 
   for(i = 0; i < vp_max[gViewportType]; i++) {
 		Player *p = game->player + viewport_content[i];
@@ -138,19 +138,19 @@ void drawCycleShadow(PlayerVisual *pV, Player *p, int lod, int drawTurn) {
 
   glEnable(GL_CULL_FACE);
 
-  if(gSettingsCache.use_stencil) {
+  /*if(gSettingsCache.use_stencil) {
     glEnable(GL_STENCIL_TEST);
     glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
     glStencilFunc(GL_GREATER, 1, 1);
     glEnable(GL_BLEND);
     glColor4fv(shadow_color);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  } else {
+  } else {*/
 	  //TODO: Check this
 	  glColor4f(0, 0, 0, 1);
     //glColor3f(0, 0, 0);
     glDisable(GL_BLEND);
-  }
+  /*}*/
 
   /* transformations */
 

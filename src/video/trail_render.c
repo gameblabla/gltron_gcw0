@@ -16,7 +16,7 @@ void trailStatesNormal(Player *pPlayer, int texture) {
 	glBindTexture(GL_TEXTURE_2D, texture);
 	
 	//TODO: changed i to x
-	glTexEnvx(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
 
 	{ 
 		float black[] = { 0, 0, 0, 1 };

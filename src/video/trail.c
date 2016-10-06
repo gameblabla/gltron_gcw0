@@ -205,7 +205,7 @@ void drawTrailLines(Player *p, PlayerVisual *pV) {
 void drawTrailShadow(Player* p, PlayerVisual *pV) {
   /* states */
 
-  if(gSettingsCache.use_stencil) {
+  /*if(gSettingsCache.use_stencil) {
     glEnable(GL_STENCIL_TEST);
     glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
     glStencilFunc(GL_GREATER, 1, 1);
@@ -213,10 +213,10 @@ void drawTrailShadow(Player* p, PlayerVisual *pV) {
 
     glColor4fv(shadow_color);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  } else {
+  } else {*/
     glColor4f(0, 0, 0, 1.0);
     glDisable(GL_BLEND);
-  }
+ /* }*/
 
   /* transformation */
 

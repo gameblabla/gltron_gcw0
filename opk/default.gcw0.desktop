@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GLTron
+Comment=glTron
+Exec=gltron.elf
+Icon=icon
+Terminal=false
+Categories=games;
+X-OD-NeedsDownscaling=false

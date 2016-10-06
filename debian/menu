@@ -1,4 +1,0 @@
-?package(gltron):needs="X11" section="Games/Action" \
-  title="glTron" command="/usr/games/gltron" \
-  icon="/usr/share/pixmaps/gltron.xpm"
-

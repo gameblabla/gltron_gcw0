@@ -42,7 +42,7 @@ void drawRecognizerShadow(void) {
   /* states */
 
   glEnable(GL_CULL_FACE);
-  if(gSettingsCache.use_stencil) {
+  /*if(gSettingsCache.use_stencil) {
     glEnable(GL_STENCIL_TEST);
     glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
     glStencilFunc(GL_GREATER, 1, 1);
@@ -50,12 +50,12 @@ void drawRecognizerShadow(void) {
 
     glColor4fv(shadow_color);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  } else {
+  } else {*/
 	//TODO: Check this
 	  glColor4f(0, 0, 0, 0);
     //glColor3f(0, 0, 0);
     glDisable(GL_BLEND);
-  }
+ /* }*/
   
   /* transformations */
   getRecognizerPositionVelocity(&p, &v);

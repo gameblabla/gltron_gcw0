@@ -1,9 +1,10 @@
-CC = gcc-6
-CXX = g++-6
-LD = g++-6
-CFLAGS = -O0 -g -Iutil -D_PC -Ilua/include -Isrc/include/video -Isrc/include/video/back -DVERSION="'1.0'" $(shell sdl-config --cflags) -Inebu/include -Isrc/include \
--DDATA_DIR=\".\" -DSNAP_DIR=\".\" -DPREF_DIR=\"~\" -DSEPARATOR="'/'" -D_PC
-LDFLAGS     = -lSDLmain -lSDL -lSDL_mixer -lSDL_sound -lpng -lm -lEGL -lGLESv1_CM
+CC = mipsel-linux-gcc
+CXX = mipsel-linux-g++
+LD = mipsel-linux-g++
+CFLAGS = -O0 -g  \
+-Ilua/include -Isrc/include/video -Isrc/include/video/back -DVERSION="'1.0'" -Inebu/include -Isrc/include \
+-DDATA_DIR=\".\" -DSNAP_DIR=\".\" -DPREF_DIR=\"~\" -DSEPARATOR="'/'" -DGCW
+LDFLAGS = -lSDL -lSDL_mixer -lSDL_sound -lpng -lEGL -lGLESv1_CM
 EXE = gltron
 OBJS = $(patsubst %.c, %.o, $(shell find . -name \*.c))
 OBJS += $(patsubst %.cpp, %.o, $(shell find . -name \*.cpp))

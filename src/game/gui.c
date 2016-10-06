@@ -32,7 +32,7 @@ void drawGuiBackground(void) {
   glEnable(GL_TEXTURE_2D);
   glBindTexture(GL_TEXTURE_2D, gScreen->textures[TEX_GUI]);
   //TODO: changed from i to x
-  glTexEnvx(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
   //TODO:Check ! Rewrite for symbian
   glColor3f(1.0, 1.0, 1.0);
@@ -77,7 +77,7 @@ void drawGuiLogo(void) {
   glBindTexture(GL_TEXTURE_2D, gScreen->textures[TEX_LOGO]);
   
   //TODO: changed from i to x
-  glTexEnvx(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -192,6 +192,7 @@ void keyboardGui(int state, int key, int x, int y) {
     break;
   case ' ': 
   case SYSTEM_KEY_RETURN:
+  case SYSTEM_KEY_CONFIRM:
 	case SYSTEM_JOY_BUTTON_0:
 	case SYSTEM_JOY_BUTTON_1:
 	case SYSTEM_JOY_BUTTON_2:
@@ -261,14 +262,12 @@ void initGLGui(void) {
 }
 	
 void guiMouse(int buttons, int state, int x, int y) {
-  fprintf(stderr, "Mouse buttons: %d, State %d, Position (%d, %d)\n",
+  /*fprintf(stderr, "Mouse buttons: %d, State %d, Position (%d, %d)\n",
 	  buttons, state, x, y); 
-
-  /* fprintf(stderr, "testing for state == %d\n", SYSTEM_MOUSEPRESSED); */
   if (state == SYSTEM_MOUSEPRESSED) {	
     if(getSettingi("playEffects"))
       playMenuFX(fx_action);
-  }
+  }*/
 }
 
 void guiMouseMotion(int mx, int my) {

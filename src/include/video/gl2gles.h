@@ -8,7 +8,7 @@
 #define glColor3fv(color_3v) glColor4f(color_3v[0],color_3v[1],color_3v[2],1.0f)
 #define glColor3f(c1,c2,c3) glColor4f(c1,c2,c3,1.0f)
 //TODO: check this!
-#define glColor3ubv(color_3v) glColor4x(color_3v[0],color_3v[1],color_3v[2],255)
+#define glColor3ubv(color_3v) glColor4f(color_3v[0],color_3v[1],color_3v[2],1.0f)
 #define glColor3d(c1,c2,c3) glColor4f(c1,c2,c3,1.0f)
 
 //Floating

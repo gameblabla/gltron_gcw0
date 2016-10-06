@@ -1,30 +1,61 @@
-    #include <EGL/egl.h>
-    #include <GLES/gl.h>
-    #include <SDL/SDL_syswm.h>
- 
+#include <EGL/egl.h>
+#include <GLES/gl.h>
+#include <SDL/SDL_syswm.h>
 #include "eglport.h"
- 
-    EGLDisplay g_eglDisplay = 0;
-    EGLConfig g_eglConfig[1];
-    EGLContext g_eglContext = 0;
-    EGLSurface g_eglSurface = 0;
-    Display *g_x11Display = NULL;
 
+#define USE_GLES1
+#define     totalConfigsIn 5                /** Total number of configurations to request */
+ 
+#if defined(USE_EGL_SDL) || defined(_PC)
+    #define YES_EGL_SDL 1
+#else
+    #define YES_EGL_SDL 0
+#endif
+
+int8_t GetNativeWindow( uint16_t width, uint16_t height );
+ 
+enum EGL_SETTINGS_T {
+    CFG_MODE=0,             /** Render mode for EGL 0=RAW 1=SDL. */
+    CFG_VSYNC,              /** Controls system vsync if available. */
+    CFG_FSAA,               /** Number of samples for full screen AA. 0 is off, 2/4 samples. */
+    CFG_FPS,                /** Calculate and report frame per second. */
+    CFG_RED_SIZE,           /** Number of bits of Red in the color buffer. */
+    CFG_GREEN_SIZE,         /** Number of bits of Green in the color buffer. */
+    CFG_BLUE_SIZE,          /** Number of bits of Blue in the color buffer. */
+    CFG_ALPHA_SIZE,         /** Number of bits of Alpha in the color buffer. */
+    CFG_DEPTH_SIZE,         /** Number of bits of Z in the depth buffer. */
+    CFG_BUFFER_SIZE,        /** The total color component bits in the color buffer. */
+    CFG_STENCIL_SIZE,       /** Number of bits of Stencil in the stencil buffer. */
+    CFG_TOTAL               /** Total number of settings. */
+};
+EGLint              eglSettings[CFG_TOTAL]; /** Stores setting values. */
+ 
+EGLConfig   eglConfigs[totalConfigsIn];     /** Structure containing references to matching configurations */
+EGLDisplay g_eglDisplay = 0;
+EGLConfig g_eglConfig[1];
+EGLContext g_eglContext = 0;
+EGLSurface g_eglSurface = 0;
+
+NativeWindowType    nativeWindow  = 0;      /** Reference to the systems native window */
  
 // consts
-#define COLOURDEPTH_RED_SIZE  		8
-#define COLOURDEPTH_GREEN_SIZE 		8
-#define COLOURDEPTH_BLUE_SIZE 		8
-#define COLOURDEPTH_DEPTH_SIZE		24
+#define COLOURDEPTH_RED_SIZE  		5
+#define COLOURDEPTH_GREEN_SIZE 		6
+#define COLOURDEPTH_BLUE_SIZE 		5
+#define COLOURDEPTH_DEPTH_SIZE		16
  
 static const EGLint g_configAttribs[] ={
 					  EGL_RED_SIZE,      	    COLOURDEPTH_RED_SIZE,
 					  EGL_GREEN_SIZE,    	    COLOURDEPTH_GREEN_SIZE,
 					  EGL_BLUE_SIZE,     	    COLOURDEPTH_BLUE_SIZE,
 					  EGL_DEPTH_SIZE,	    COLOURDEPTH_DEPTH_SIZE,
+					  /*EGL_BUFFER_SIZE, 16,
+					  EGL_STENCIL_SIZE, 0,*/
 					  EGL_SURFACE_TYPE,         EGL_WINDOW_BIT,
 					  EGL_RENDERABLE_TYPE,      EGL_OPENGL_ES_BIT,
-					  EGL_BIND_TO_TEXTURE_RGBA, EGL_TRUE,
+					  EGL_BIND_TO_TEXTURE_RGBA, EGL_FALSE,
+					  EGL_SAMPLE_BUFFERS, EGL_FALSE,
+					  EGL_SAMPLES, EGL_FALSE,
 					  EGL_NONE
 				       };
 
@@ -32,22 +63,10 @@ static const EGLint g_configAttribs[] ={
 Initialise opengl settings. Call straight after SDL_SetVideoMode()
 ===========================================================*/
  
-int EGL_Init()
+int8_t EGL_Open( uint16_t width, uint16_t height )
 {
-
-    // use EGL to initialise GLES
-    printf("Try to get display!\n");
-    g_x11Display = XOpenDisplay(NULL);
- 
-    if (!g_x11Display)
-    {
-	fprintf(stderr, "ERROR: unable to get display!\n");
-	return 0;
-    }
-    XSynchronize(g_x11Display, True);
-
     printf("Try to initialise EGL display.\n");
-    g_eglDisplay = eglGetDisplay((EGLNativeDisplayType)g_x11Display);
+    g_eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (g_eglDisplay == EGL_NO_DISPLAY)
     {
 	fprintf(stderr, "Unable to initialise EGL display.\n");
@@ -73,29 +92,24 @@ int EGL_Init()
     printf("Found %d configs.\n", numConfigsOut);
  
     // Get the SDL window handle
-    printf("Try to get window handle\n");
-    SDL_SysWMinfo sysInfo; //Will hold our Window information
-    SDL_VERSION(&sysInfo.version); //Set SDL version
-    if(SDL_GetWMInfo(&sysInfo) <= 0) 
+    printf( "EGLport: Creating window surface\n" );
+
+    if (GetNativeWindow( width, height ) != 0)
     {
-	fprintf(stderr, "Unable to get window handle\n");
-	return 0;
+        printf( "EGLport ERROR: Unable to obtain native window!\n" );
+        return 1;
     }
 
-    printf("Try to create EGL surface!\n");
-    g_eglSurface = eglCreateWindowSurface(g_eglDisplay, g_eglConfig[0], (EGLNativeWindowType)sysInfo.info.x11.window, 0);
-//    g_eglSurface = eglCreateWindowSurface(g_eglDisplay, g_eglConfig[0], (EGLNativeWindowType)win, 0);
+    g_eglSurface = eglCreateWindowSurface(g_eglDisplay, g_eglConfig[0], nativeWindow, 0);
     if ( g_eglSurface == EGL_NO_SURFACE)
     {
 	fprintf(stderr, "Unable to create EGL surface!\n");
 	return 0;
     }
- 
-    // Bind GLES and create the context
-    printf("Try to create GLES context!\n");
-    eglBindAPI(EGL_OPENGL_ES_API);
+
     EGLint contextParams[] = {EGL_CONTEXT_CLIENT_VERSION, 1, EGL_NONE};		// Use GLES version 1.x
-    g_eglContext = eglCreateContext(g_eglDisplay, g_eglConfig[0], EGL_NO_CONTEXT, contextParams);
+	g_eglContext = eglCreateContext(g_eglDisplay, g_eglConfig[0], EGL_NO_CONTEXT, contextParams);
+	
     if (g_eglContext == EGL_NO_CONTEXT)
     {
 	fprintf(stderr, "Unable to create GLES context!\n");
@@ -111,11 +125,45 @@ int EGL_Init()
  
     return 1;
 }
+
+
+int8_t GetNativeWindow( uint16_t width, uint16_t height )
+{
+    nativeWindow = 0;
+
+#if defined(WIZ) || defined(CAANOO)
+
+    nativeWindow = (NativeWindowType)malloc(16*1024);
+
+    if(nativeWindow == NULL) {
+        printf( "EGLport ERROR: Memory for window Failed\n" );
+        return 1;
+    }
+    
+#else /* default */
+
+	#ifdef _PC
+		SDL_SysWMinfo sysInfo; //Will hold our Window information
+		SDL_VERSION(&sysInfo.version); //Set SDL version
+		if(SDL_GetWMInfo(&sysInfo) <= 0) 
+		{
+		fprintf(stderr, "Unable to get window handle\n");
+		return 0;
+		}
+		nativeWindow = sysInfo.info.x11.window;
+	#else
+		nativeWindow = 0;
+	#endif
+
+#endif /* WIZ / CAANOO */
+
+    return 0;
+}
  
 /*======================================================
  * Kill off any opengl specific details
   ====================================================*/
-void EGL_Destroy()
+void EGL_Close()
 {
     eglMakeCurrent(g_eglDisplay, NULL, NULL, EGL_NO_CONTEXT);
     eglDestroySurface(g_eglDisplay, g_eglSurface);
@@ -125,12 +173,10 @@ void EGL_Destroy()
     g_eglConfig[0] = 0;
     eglTerminate(g_eglDisplay);
     g_eglDisplay = 0;
-    XCloseDisplay(g_x11Display);
-    g_x11Display = NULL;
 }
  
  
-int EGL_SwapBuffers()
+void EGL_SwapBuffers()
 {
-    return eglSwapBuffers(g_eglDisplay, g_eglSurface);
+	eglSwapBuffers(g_eglDisplay, g_eglSurface);
 }

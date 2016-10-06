@@ -18,7 +18,7 @@ void setupLights(int type) {
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, black);
 	//TODO: Check that the second light model is not needed
 	//R.K. changed from 1 to 0
-	glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 0);
+	//glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, 0);
 	//glLightModelx(GL_LIGHT_MODEL_LOCAL_VIEWER, 0);
 
 	switch(type) {

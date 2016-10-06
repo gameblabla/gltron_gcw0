@@ -1,7 +1,7 @@
 #include "../include/video/nebu_video_system.h"
 
 #include "SDL.h"
-#include <SDL_syswm.h>
+//#include <SDL_syswm.h>
 #include "../../eglport/eglport.h"
 #include <GLES/gl.h>
 
@@ -71,9 +71,10 @@ int SystemCreateWindow(char *name) {
     exit(1); /* OK: critical, no visual */
   }
 
-  if (!EGL_Init()) {
+	EGL_Open(width, height);
+  /*if (!EGL_Init()) {
     fprintf(stderr, "[system] Couldn't initialize EGL.");
-  }
+  }*/
 
 /*
   SDL_WM_SetCaption("GLtron", "");
@@ -113,7 +114,7 @@ void SystemDestroyWindow(int id) {
 	 * caused by this, but I can't remember what they where
 	 */
 		 
-  EGL_Destroy();
+  EGL_Close();
   SDL_QuitSubSystem(SDL_INIT_VIDEO);
   video_initialized = 0;
 }

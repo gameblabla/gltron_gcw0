@@ -22,7 +22,7 @@ void videoInit(void) {
 
 void inputInit(void) {
 	/* keyboard */
-  SDL_EnableKeyRepeat(0, 0); /* turn keyrepeat off */
+ // SDL_EnableKeyRepeat(0, 0); /* turn keyrepeat off */
   
 	/* joystick */
 	if(SDL_Init(SDL_INIT_JOYSTICK) >= 0) {

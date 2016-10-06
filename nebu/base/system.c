@@ -11,6 +11,7 @@ void SystemExit() {
   fprintf(stderr, "[system] shutting down SDL now\n");
   SDL_Quit();
   fprintf(stderr, "[system] exiting application\n");
+  exit(0);
 }
 
 unsigned int SystemGetElapsedTime() {

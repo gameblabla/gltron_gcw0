@@ -103,14 +103,14 @@ static char* getNextFilename(const char *suffix, int *start_at) {
 }
   
 static int captureScreenToPixmap(screenshot_info_t *img, Visual *display) { 
-  img->width = display->w;
+  /*img->width = display->w;
   img->height = display->h;
   if (!(img->pixmap = malloc(img->width * 
                              img->height * SCREENSHOT_BYTES_PER_PIXEL))) {
     return -1;
   }
   glReadPixels(0, 0, img->width, img->height, GL_RGB, GL_UNSIGNED_BYTE, 
-               img->pixmap);
+               img->pixmap);*/
   return 0;
 }
 

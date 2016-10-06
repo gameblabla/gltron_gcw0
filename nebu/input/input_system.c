@@ -9,15 +9,15 @@
 static float joystick_threshold = 0;
 
 void SystemGrabInput() {
-  SDL_WM_GrabInput(SDL_GRAB_ON);
+  /*SDL_WM_GrabInput(SDL_GRAB_ON);*/
 }
 
 void SystemUngrabInput() {
-  SDL_WM_GrabInput(SDL_GRAB_OFF);
+ /* SDL_WM_GrabInput(SDL_GRAB_OFF);*/
 }
 
 void SystemWarpPointer(int x, int y) {
-  SDL_WarpMouse(x, y);
+  /*SDL_WarpMouse(x, y);*/
 }
 
 void SystemHidePointer() {
@@ -29,15 +29,15 @@ void SystemUnhidePointer() {
 }
 
 void SystemMouse(int buttons, int state, int x, int y) {
-  if(current)
+ /* if(current)
     if(current->mouse != NULL)
-      current->mouse(buttons, state, x, y);
+      current->mouse(buttons, state, x, y);*/
 }
 
 void SystemMouseMotion(int x, int y) {
-  if(current)
+  /*if(current)
     if(current->mouseMotion != NULL)
-      current->mouseMotion(x, y);
+      current->mouseMotion(x, y);*/
 }
 
 extern char* SystemGetKeyName(int key) {
@@ -74,7 +74,11 @@ void SystemHandleInput(SDL_Event *event) {
 		key = 0;
 		switch(event->key.keysym.sym) {
 		case SDLK_SPACE: key = ' '; break;
-		case SDLK_ESCAPE: key = 27; break;
+		/* GCW0 here motherfuckers*/
+		case SDLK_ESCAPE: 
+		case SDLK_LALT:
+		key = 27; 
+		break;
 		case SDLK_RETURN: key = 13; break;
 		default:
 			if(keyname[1] == 0) key = keyname[0];
@@ -86,7 +90,7 @@ void SystemHandleInput(SDL_Event *event) {
 		else
 			current->keyboard(state, event->key.keysym.sym, 0, 0);
 		break;
-	case SDL_JOYAXISMOTION:
+/*	case SDL_JOYAXISMOTION:
 		if( abs(event->jaxis.value) <= joystick_threshold * SYSTEM_JOY_AXIS_MAX) {
 			// axis returned to origin, only generate event if it was set before
 			if(joy_axis_state[event->jaxis.which] & (1 << event->jaxis.axis)) {
@@ -158,7 +162,7 @@ void SystemHandleInput(SDL_Event *event) {
 		break;
 	case SDL_MOUSEMOTION:
 		SystemMouseMotion(event->motion.x, event->motion.y);
-		break;
+		break;*/
 	}
 }
 
